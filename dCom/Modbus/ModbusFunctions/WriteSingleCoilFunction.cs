@@ -25,7 +25,30 @@ namespace Modbus.ModbusFunctions
         public override byte[] PackRequest()
         {
             //TO DO: IMPLEMENT
-            throw new NotImplementedException();
+            ModbusWriteCommandParameters param = (ModbusWriteCommandParameters)CommandParameters;
+            byte[] request = new byte[12];
+
+            request[0] = (byte)(param.TransactionId >> 8);
+            request[1] = (byte)(param.TransactionId & 0xFF);
+
+            request[2] = (byte)(param.ProtocolId >> 8);
+            request[3] = (byte)(param.ProtocolId & 0xFF);
+
+            request[4] = (byte)(param.Length >> 8);
+            request[5] = (byte)(param.Length & 0xFF);
+
+
+            request[6] = param.UnitId;
+
+            request[7] = param.FunctionCode;
+            request[8] = (byte)(param.OutputAddress >> 8);
+            request[9] = (byte)(param.OutputAddress & 0xFF);
+
+            request[10] = (byte)(param.Value >> 8);
+            request[11] = (byte)(param.Value & 0xFF);
+
+            return request;
+
         }
 
         /// <inheritdoc />
