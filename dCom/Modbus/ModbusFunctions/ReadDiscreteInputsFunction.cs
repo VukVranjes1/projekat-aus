@@ -24,14 +24,14 @@ namespace Modbus.ModbusFunctions
         /// <inheritdoc />
         public override byte[] PackRequest()
         {
-            //TO DO: IMPLEMENT
+           
             throw new NotImplementedException();
         }
 
         /// <inheritdoc />
         public override Dictionary<Tuple<PointType, ushort>, ushort> ParseResponse(byte[] response)
         {
-            //TO DO: IMPLEMENT
+         
             throw new NotImplementedException();
         }
     }
