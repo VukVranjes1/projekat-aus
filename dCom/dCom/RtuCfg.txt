@@ -2,8 +2,8 @@ STA 127
 TCP 47961
 
 
-DO_REG  1 2300   0  0      1     0  DO  @DigOutFirst #
-DO_REG  1 2302   0  0      1     0  DO  @DigOutSecond #
-DO_REG  2 2305   0  0      1     0  DO  @DigOutThird #
-IN_REG  1 2200  0  0   4095  2000  AI  @AnaInFirst  3
-HR_INT  1 1400 0  0   4095  1200  AO  @AnaOutFirst 3
+DO_REG  1 2300   0  0      1     0  DO  @DigOutSTOP #
+DO_REG  1 2302   0  0      1     0  DO  @DigOutV1 #
+DO_REG  2 2305   0  0      1     0  DO  @DigOutP1P2 #
+IN_REG  1 2200  0  0   4095  2000  AI  @AnaInL  3
+HR_INT  1 1400 0  0   4095  1200  AO  @AnaOutN1 3
