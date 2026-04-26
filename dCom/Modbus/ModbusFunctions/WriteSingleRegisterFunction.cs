@@ -58,9 +58,20 @@ namespace Modbus.ModbusFunctions
 
             Dictionary<Tuple<PointType, ushort>, ushort> result = new Dictionary<Tuple<PointType, ushort>, ushort>();
 
-            ushort value;
-            value = param.Value;
-            result.Add(new Tuple<PointType, ushort>(PointType.ANALOG_OUTPUT, (ushort)(param.OutputAddress)), value);
+            byte address1 = response[8];
+            byte address2 = response[9];
+
+            byte value1 = response[10];
+            byte value2 = response[11];
+
+
+
+            ushort address = (ushort)((ushort)(address1 << 8) + address2);
+            ushort value = (ushort)((ushort)(value1 << 8) + value2);
+
+
+
+            result.Add(new Tuple<PointType, ushort>(PointType.ANALOG_OUTPUT, address), value);
 
             return result;
         }
