@@ -73,8 +73,8 @@ namespace Modbus.ModbusFunctions
 
             for (int i = 0; i<requiredRegisters; i++)
             {
-                byte firstByte = response[9+2*i];
-                byte secondByte = response[10+2*i];
+                byte firstByte = response[9+ 2 * i];
+                byte secondByte = response[10 + 2 * i];
                 ushort value = (ushort)((ushort)(firstByte) << 8 | (ushort)(secondByte) & 0xff);
                 result.Add(new Tuple<PointType, ushort>(PointType.ANALOG_OUTPUT, (ushort)(param.StartAddress + counter)), value);
                 counter++;
