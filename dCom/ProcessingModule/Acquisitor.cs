@@ -63,32 +63,32 @@ namespace ProcessingModule
 
             while (!disposed)
             {
-                try
-                {
-
-                    while (true)
-                    {
+                
+                  
                         acquisitionTrigger.WaitOne();
-                        foreach (var item in configuration.GetConfigurationItems())
-                        {
-                            item.SecondsPassedSinceLastPoll++;
-                            if (item.SecondsPassedSinceLastPoll == item.AcquisitionInterval)
-                            {
-                                processingManager.ExecuteReadCommand(item, configuration.GetTransactionId(), configuration.UnitAddress, item.StartAddress, item.NumberOfRegisters); ;
-                                item.SecondsPassedSinceLastPoll = 0;
-                            }
-                        }
-
-                    }
-
-                }
-
-                catch 
+                foreach (var item in configuration.GetConfigurationItems())
                 {
+                    try
                     {
-                        stateUpdater.LogMessage("Akvizicija je prestala sa radom.");
+
+                        item.SecondsPassedSinceLastPoll++;
+                        if (item.SecondsPassedSinceLastPoll == item.AcquisitionInterval)
+                        {
+                            processingManager.ExecuteReadCommand(item, configuration.GetTransactionId(), configuration.UnitAddress, item.StartAddress, item.NumberOfRegisters);
+                            item.SecondsPassedSinceLastPoll = 0;
+                        }
                     }
+                    
+                    catch
+                    {
+                        {
+                            stateUpdater.LogMessage("Akvizicija je prestala sa radom.");
+                        }
+                    }
+
                 }
+
+               
             }
 
 
