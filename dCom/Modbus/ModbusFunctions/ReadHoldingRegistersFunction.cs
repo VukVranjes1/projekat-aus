@@ -71,7 +71,7 @@ namespace Modbus.ModbusFunctions
             else requiredRegisters = numberOfRegisters;
 
 
-            for (int i = 0; i<requiredRegisters; i=i+2)
+            for (int i = 0; i<requiredRegisters; i++)
             {
                 byte firstByte = response[9+i];
                 byte secondByte = response[10+i];
