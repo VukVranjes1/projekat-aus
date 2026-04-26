@@ -64,7 +64,7 @@ namespace Modbus.ModbusFunctions
             for (int i = 0; i<numberOfBytes; i++)
             {
 
-                int mask = 1;
+                byte mask = 1;
                 byte currentByte = response[9 + i];
 
                 for (int j = 0; j < 8; j++)
