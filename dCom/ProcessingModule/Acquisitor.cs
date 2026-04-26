@@ -81,9 +81,9 @@ namespace ProcessingModule
                     
                     catch
                     {
-                        {
+                        
                             stateUpdater.LogMessage("Akvizicija je prestala sa radom.");
-                        }
+                        
                     }
 
                 }
