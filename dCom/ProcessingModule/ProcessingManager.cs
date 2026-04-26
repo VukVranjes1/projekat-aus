@@ -141,6 +141,7 @@ namespace ProcessingModule
         private void ProcessAnalogPoint(IAnalogPoint point, ushort newValue)
         {
             point.RawValue = newValue;
+            point.EguValue = eguConverter.ConvertToEGU(point.ConfigItem.ScaleFactor,point.ConfigItem.Deviation,newValue);
             point.Timestamp = DateTime.Now;
         }
 

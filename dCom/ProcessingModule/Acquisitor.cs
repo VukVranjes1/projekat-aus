@@ -7,9 +7,11 @@ namespace ProcessingModule
     /// <summary>
     /// Class containing logic for periodic polling.
     /// </summary>
+    
     public class Acquisitor : IDisposable
 	{
-		private AutoResetEvent acquisitionTrigger;
+        private bool disposed = false;
+        private AutoResetEvent acquisitionTrigger;
         private IProcessingManager processingManager;
         private Thread acquisitionWorker;
 		private IStateUpdater stateUpdater;
@@ -55,8 +57,42 @@ namespace ProcessingModule
         /// Acquisitor thread logic.
         /// </summary>
 		private void Acquisition_DoWork()
-		{
-            //TO DO: IMPLEMENT
+        {
+            
+
+
+            while (!disposed)
+            {
+                try
+                {
+
+                    while (true)
+                    {
+                        acquisitionTrigger.WaitOne();
+                        foreach (var item in configuration.GetConfigurationItems())
+                        {
+                            item.SecondsPassedSinceLastPoll++;
+                            if (item.SecondsPassedSinceLastPoll == item.AcquisitionInterval)
+                            {
+                                processingManager.ExecuteReadCommand(item, configuration.GetTransactionId(), configuration.UnitAddress, item.StartAddress, item.NumberOfRegisters); ;
+                                item.SecondsPassedSinceLastPoll = 0;
+                            }
+                        }
+
+                    }
+
+                }
+
+                catch 
+                {
+                    {
+                        stateUpdater.LogMessage("Akvizicija je prestala sa radom.");
+                    }
+                }
+            }
+
+
+
         }
 
         #endregion Private Methods
