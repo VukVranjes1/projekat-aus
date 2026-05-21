@@ -18,7 +18,7 @@ namespace dCom.Configuration
 		private string processingType;
 		private string description;
 		private int acquisitionInterval;
-		private double scalingFactor;
+		private double scalingFactor; // odavde pa na dole su itemi koji dolaze na kolokvijum !!!
 		private double deviation;
 		private double egu_max;
 		private double egu_min;
