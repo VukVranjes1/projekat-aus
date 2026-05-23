@@ -301,36 +301,36 @@ namespace dCom.Configuration
 			}
 			else
 			{
-				Int32.TryParse(configurationParameters[10], out temp);
-				scalingFactor = temp;
+				Double.TryParse(configurationParameters[10], out doubleTemp);
+				scalingFactor = doubleTemp;
 			}
 			if (configurationParameters[11].Equals("#"))
 			{
-				deviation = 1;
+				deviation = 0;
 			}
 			else
 			{
-				Int32.TryParse(configurationParameters[11], out temp);
-				deviation = temp;
+				Double.TryParse(configurationParameters[11], out doubleTemp);
+				deviation = doubleTemp;
 			}
             if (configurationParameters[12].Equals("#"))
             {
-                egu_max = 1;
+                egu_max = 1000;
             }
             else
             {
-                Int32.TryParse(configurationParameters[12], out temp);
-                egu_max = temp;
+                Double.TryParse(configurationParameters[12], out doubleTemp);
+                egu_max = doubleTemp;
             }
 
             if (configurationParameters[13].Equals("#"))
             {
-                egu_min = 1;
+                egu_min = 0;
             }
             else
             {
-                Int32.TryParse(configurationParameters[13], out temp);
-                egu_min = temp;
+                Double.TryParse(configurationParameters[13], out doubleTemp);
+                egu_min = doubleTemp;
             }
 
             if (configurationParameters[14].Equals("#"))
@@ -346,23 +346,23 @@ namespace dCom.Configuration
 
 			if (configurationParameters[15].Equals("#"))
 			{
-				highLimit = 1;
+				highLimit = 800;
 			}
 			else
 			{
-				Int32.TryParse(configurationParameters[15], out temp);
-				highLimit = temp;
+                Double.TryParse(configurationParameters[15], out doubleTemp);
+				highLimit = doubleTemp;
 
 			}
 
 
            if (configurationParameters[16].Equals("#"))
                 {
-                    lowLimit = 1;
+                    lowLimit = 200;
                 }
                 else
                 {
-                    Int32.TryParse(configurationParameters[16], out temp);
+                Double.TryParse(configurationParameters[16], out doubleTemp);
                     lowLimit = temp;
                 }
 

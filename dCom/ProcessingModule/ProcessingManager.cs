@@ -129,9 +129,9 @@ namespace ProcessingModule
         /// <param name="newValue">The new value.</param>
         private void ProcessDigitalPoint(IDigitalPoint point, ushort newValue)
         {
-            
-            point.Alarm = alarmProcessor.GetAlarmForDigitalPoint(point.RawValue, point.ConfigItem); // ovde moze RawValue jer je svejedno za digitalne, imamo samo 0 i 1 nemamo sta da skaliramo od egua ka sirovoj vrednosti i obratno
             point.RawValue = newValue;
+            point.Alarm = alarmProcessor.GetAlarmForDigitalPoint(point.RawValue, point.ConfigItem); // ovde moze RawValue jer je svejedno za digitalne, imamo samo 0 i 1 nemamo sta da skaliramo od egua ka sirovoj vrednosti i obratno
+        
             point.Timestamp = DateTime.Now;
             point.State = (DState)newValue;
 
@@ -146,7 +146,7 @@ namespace ProcessingModule
         {
 
 
-            point.RawValue = eguConverter.ConvertToRaw(point.ConfigItem.ScaleFactor, point.ConfigItem.Deviation, newValue);
+            point.RawValue = newValue;
             point.Timestamp = DateTime.Now;
             point.EguValue = eguConverter.ConvertToEGU(point.ConfigItem.ScaleFactor,point.ConfigItem.Deviation,point.RawValue);
             point.Alarm = alarmProcessor.GetAlarmForAnalogPoint(point.EguValue, point.ConfigItem);

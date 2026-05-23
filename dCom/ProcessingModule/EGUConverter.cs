@@ -39,7 +39,13 @@ namespace ProcessingModule
             // RAW = (EGU-DEV)/SF
 
             ushort rawValue = 0;
-            rawValue = (ushort) ((eguValue - deviation) / scalingFactor);
+
+            rawValue = (ushort) Math.Round(((eguValue - deviation) / scalingFactor));
+
+            if (rawValue<0 || rawValue>65535)
+            {
+                rawValue = 65535;
+            }
             return rawValue;
 		}
 	}
