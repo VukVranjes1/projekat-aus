@@ -363,7 +363,7 @@ namespace dCom.Configuration
                 else
                 {
                 Double.TryParse(configurationParameters[16], out doubleTemp);
-                    lowLimit = temp;
+                    lowLimit = doubleTemp;
                 }
 
 
