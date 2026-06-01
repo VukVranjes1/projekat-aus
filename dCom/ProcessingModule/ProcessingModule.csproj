@@ -31,9 +31,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Modbus">
-      <HintPath>..\3rdPartyLibs\Modbus.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -55,6 +52,10 @@
     <ProjectReference Include="..\Common\Common.csproj">
       <Project>{823d1355-efd0-481c-a0d9-fda0c4ea37df}</Project>
       <Name>Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Modbus\Modbus.csproj">
+      <Project>{65B26E48-3A6C-4BC4-AF16-F77809B5AFA2}</Project>
+      <Name>Modbus</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
